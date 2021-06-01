@@ -12,6 +12,9 @@
       var myChart = echarts.init(document.getElementById("main"));
       myChart.showLoading();
       fetch("./result.json").then((res) => {
+        console.log(res);
+        console.log(typeof res);
+        console.log(JSON.parse(res));
         myChart.hideLoading();
         myChart.setOption(
           (option = {
@@ -23,7 +26,7 @@
               {
                 type: "tree",
 
-                data: [{ name: "Global Objects", children: res }],
+                data: [{ name: "Global Objects", children: res, collapsed: true }],
 
                 top: "1%",
                 left: "7%",
