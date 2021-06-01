@@ -64,6 +64,7 @@
           );
         });
       myChart.on("contextmenu", "series.tree", function (e) {
+        e.event.event.preventDefault();
         window.open(e.data.link);
       });
     </script>
