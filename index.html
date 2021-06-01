@@ -10,12 +10,11 @@
     <div id="main" style="width: 100vw; height: 100vh"></div>
     <script type="text/javascript">
       var myChart = echarts.init(document.getElementById("main"));
+
       myChart.showLoading();
       fetch("./result.json")
         .then((response) => response.json())
         .then((res) => {
-          console.log(res);
-          console.log(typeof res);
           myChart.hideLoading();
           myChart.setOption(
             (option = {
@@ -27,7 +26,15 @@
                 {
                   type: "tree",
 
-                  data: [{ name: "Global Objects", children: res }],
+                  data: [
+                    {
+                      name: "Global Objects",
+                      children: [
+                        { name: "1", link: "https://baidu.com" },
+                        { name: "2", link: "https://google.com" },
+                      ],
+                    },
+                  ],
 
                   top: "1%",
                   left: "7%",
@@ -64,6 +71,9 @@
             })
           );
         });
+      myChart.on("contextmenu", "series.tree", function (e) {
+        window.open(e.data.link);
+      });
     </script>
   </body>
 </html>
