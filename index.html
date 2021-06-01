@@ -27,9 +27,7 @@
                 {
                   type: "tree",
 
-                  data: [
-                    { name: "Global Objects", children: res, collapsed: true },
-                  ],
+                  data: [{ name: "Global Objects", children: res }],
 
                   top: "1%",
                   left: "7%",
@@ -57,10 +55,10 @@
                     focus: "descendant",
                   },
 
-                  // expandAndCollapse: true,
+                  expandAndCollapse: true,
                   animationDuration: 550,
                   animationDurationUpdate: 750,
-                  initialTreeDepth: null,
+                  // initialTreeDepth: null,
                 },
               ],
             })
