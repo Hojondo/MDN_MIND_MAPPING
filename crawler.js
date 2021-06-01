@@ -72,7 +72,7 @@ function filterHtmlAndFeedJson(currentUrl, html) {
     childNodesList.push({
       name: childNodeName,
       link: currentUrl + childNodeLink,
-      children: grandChildList,
+      children: grandChildList.length ? grandChildList : undefined,
     });
   });
 
@@ -84,7 +84,7 @@ function filterHtmlAndFeedJson(currentUrl, html) {
       "children",
       (item) => item.link === currentUrl
     );
-    if (matchLinkArrayItem) {
+    if (matchLinkArrayItem && childNodesList.length) {
       matchLinkArrayItem.children = childNodesList;
     }
   }
